@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize">
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:contentDescription="Back Icon"
+        android:padding="16dp"
+        android:src="@drawable/ic_svg_back" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/MyTextView.Large"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/imgBack"
+        android:text="Toolbar"
+        android:textStyle="bold" />
+
+</RelativeLayout>
