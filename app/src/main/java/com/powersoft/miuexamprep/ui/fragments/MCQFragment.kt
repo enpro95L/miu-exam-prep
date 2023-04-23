@@ -11,7 +11,6 @@ import com.powersoft.miuexamprep.databinding.FragmentMcqBinding
 class MCQFragment : Fragment() {
 
     private lateinit var binding: FragmentMcqBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

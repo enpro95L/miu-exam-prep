@@ -28,7 +28,7 @@ class CourseAdapter: RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
         val course = courses[position]
         holder.apply {
             tvCourseName.text = course.name
-            imgCourse.setImageResource(R.id.imgCourseIcon.toInt())
+            imgCourse.setImageResource(course.icon)
 
             itemView.setOnClickListener {
                 //Perform appropriate view navigation here

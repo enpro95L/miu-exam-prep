@@ -1,26 +1,32 @@
 package com.powersoft.miuexamprep.viewModels
 
+import android.app.Application
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
+import com.powersoft.miuexamprep.db.AppDatabase
 import com.powersoft.miuexamprep.db.CourseSeeder
 import com.powersoft.miuexamprep.db.DatabaseSeeder
 import com.powersoft.miuexamprep.model.Course
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CourseViewModel(context: Context): BaseViewModel(context) {
+class CourseViewModel(application: Application): AndroidViewModel(application) {
     private var _courses = MutableLiveData<List<Course>>()
     val courses: LiveData<List<Course>> = _courses!!
 
 
     init {
-        _courses.value = db.courseDao().all()
+        val db = AppDatabase(application)
+        Log.i(
+            "try", db.toString()
+        )
 
-        if (CourseSeeder().size != _courses.value?.size) {
-            initializeCourses(context)
-        }
+//        _courses.value = AppDatabase(application).courseDao().all()
+//
+//        if (CourseSeeder().size != _courses.value?.size) {
+//            initializeCourses(application)
+//        }
     }
 
     private fun initializeCourses(context: Context){
