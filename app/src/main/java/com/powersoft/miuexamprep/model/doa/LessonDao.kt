@@ -6,7 +6,6 @@ import androidx.room.Query
 import com.powersoft.miuexamprep.model.Lesson
 
 interface LessonDao {
-
     @Query("select * from lesson where courseId =  :courseId")
     suspend fun getLessons(courseId: Int): List<Lesson>
 

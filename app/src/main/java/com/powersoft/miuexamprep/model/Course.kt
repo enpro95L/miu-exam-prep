@@ -5,8 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Course(
-    @PrimaryKey var id: Int,
-    @ColumnInfo(name = "course_name") var courseName: String,
-    var icon: String
-) : java.io.Serializable
+data class Course(var name: String, var icon: String) : java.io.Serializable {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

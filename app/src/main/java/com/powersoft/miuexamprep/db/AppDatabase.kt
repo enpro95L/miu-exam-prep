@@ -1,4 +1,4 @@
-package com.powersoft.miuexamprep
+package com.powersoft.miuexamprep.db
 
 import android.content.Context
 import androidx.room.Database
@@ -17,7 +17,6 @@ import com.powersoft.miuexamprep.utils.ConvertorUtils
 @Database(entities = [Course::class, Lesson::class, MCQ::class], version = 1)
 @TypeConverters(ConvertorUtils::class)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun courseDao(): CourseDao
     abstract fun lessonDao(): LessonDao
     abstract fun mcqDao(): MCQDao
