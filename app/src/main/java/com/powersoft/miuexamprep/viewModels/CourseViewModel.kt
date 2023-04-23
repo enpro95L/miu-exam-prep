@@ -12,26 +12,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CourseViewModel(application: Application): AndroidViewModel(application) {
-    private var _courses = MutableLiveData<List<Course>>()
-    val courses: LiveData<List<Course>> = _courses!!
-
-
     init {
-        val db = AppDatabase(application)
-        Log.i(
-            "try", db.toString()
-        )
-
-//        _courses.value = AppDatabase(application).courseDao().all()
-//
-//        if (CourseSeeder().size != _courses.value?.size) {
-//            initializeCourses(application)
-//        }
+        initializeCourses(application)
     }
 
     private fun initializeCourses(context: Context){
         viewModelScope.launch(Dispatchers.IO) {
-            DatabaseSeeder.runCourseSeeder(context)
+            var dbCourses = AppDatabase(context).courseDao().all()
+
+            if (CourseSeeder().size != dbCourses.size) {
+                DatabaseSeeder.runCourseSeeder(context)
+            }
         }
     }
+
 }
