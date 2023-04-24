@@ -13,7 +13,7 @@ object DatabaseSeeder {
     }
 
     suspend fun runLessonSeeder(context: Context){
-        val repo = LessonRepository(AppDatabase(context).lessonDao())
+        val repo = LessonsRepository(AppDatabase(context).lessonDao())
         repo.resetTable()
 
         for (lesson in LessonSeeder()) {

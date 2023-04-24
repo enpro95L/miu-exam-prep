@@ -16,11 +16,8 @@ interface LessonDao {
     @Query("DELETE FROM LESSON")
     suspend fun resetTable(): Int
 
-    @Query("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='LESSON'")
-    suspend fun resetTableIds(): Int
-
     @Query("select * from lesson where course_id = :courseId")
-    fun courseLessons(courseId: Int): MutableLiveData<List<Lesson>>
+    fun courseLessons(courseId: Int): LiveData<List<Lesson>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(lesson: Lesson)
