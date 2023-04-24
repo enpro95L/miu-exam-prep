@@ -1,8 +1,5 @@
 package com.powersoft.miuexamprep.db
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.L
-import com.powersoft.miuexamprep.R
-import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.model.Lesson
 
 object LessonSeeder {

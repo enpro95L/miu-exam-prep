@@ -10,12 +10,12 @@ import kotlinx.coroutines.launch
 
 class LessonViewModel(application: Application): AndroidViewModel(application) {
     private val _lessons: LiveData<List<Lesson>>
-    private val repo: LessonRepository
+    private val repo: LessonsRepository
     private var _courseLessons = MutableLiveData<List<Lesson>>()
     val courseLessons: LiveData<List<Lesson>> = _courseLessons!!
 
     init {
-        repo = LessonRepository(AppDatabase(application).lessonDao())
+        repo = LessonsRepository(AppDatabase(application).lessonDao())
         _lessons = repo.allLessons
 
         if (_lessons.value?.size != LessonSeeder().size){
@@ -31,7 +31,7 @@ class LessonViewModel(application: Application): AndroidViewModel(application) {
 
     fun setCourseId(courseId: Int) {
         repo.courseId = courseId
-        _courseLessons = repo.courseLessons
+        _courseLessons.value = repo.courseLessons.value
     }
 
     fun updateLesson(lesson: Lesson) = viewModelScope.launch(Dispatchers.IO) {
