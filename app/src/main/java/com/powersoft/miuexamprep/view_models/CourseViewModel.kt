@@ -1,8 +1,7 @@
-package com.powersoft.miuexamprep.viewModels
+package com.powersoft.miuexamprep.view_models
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.*
 import com.powersoft.miuexamprep.db.AppDatabase
 import com.powersoft.miuexamprep.db.CourseSeeder
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class CourseViewModel(application: Application): AndroidViewModel(application) {
     val courses: LiveData<List<Course>>
-    val repo: CoursesRepository
+    private val repo: CoursesRepository
 
     init {
         repo = CoursesRepository(AppDatabase(application).courseDao())
