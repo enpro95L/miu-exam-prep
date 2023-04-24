@@ -9,7 +9,9 @@ object CourseSeeder {
             Course("Android Programming", R.drawable.android),
             Course("Serverside Programming", R.drawable.nodejs),
             Course("Java Fundamental Programming", R.drawable.java),
-            Course("Advanced Java Programming", R.drawable.java)
+            Course("Advanced Java Programming", R.drawable.java),
+            Course("Algorithm", R.drawable.algorithm),
+            Course("Software Architecture", R.drawable.sa)
         )
     }
 }
