@@ -4,15 +4,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.powersoft.miuexamprep.adapters.CourseAdapter
 import com.powersoft.miuexamprep.databinding.ActivityMainBinding
-import com.powersoft.miuexamprep.db.AppDatabase
-import com.powersoft.miuexamprep.viewModels.CourseViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.powersoft.miuexamprep.view_models.CourseViewModel
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: CourseViewModel
 
@@ -22,15 +19,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.tvUsername.text = intent.getStringExtra("username")
+
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(CourseViewModel::class.java)
+        )[CourseViewModel::class.java]
 
         val adapter = CourseAdapter()
         binding.rcv.adapter = adapter
 
-        viewModel.courses.observe(this){courses ->
+        viewModel.courses.observe(this) { courses ->
             courses?.let {
                 adapter.courses = courses
                 adapter.notifyDataSetChanged()
