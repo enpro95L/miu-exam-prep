@@ -36,10 +36,11 @@ class LessonActivity : AppCompatActivity() {
         val adapter = LessonAdapter()
         binding.recyclerView.adapter = adapter
 
-        viewModel.courseLessons.observe(this){lessons ->
+        viewModel.courseLessons.observe(this) { lessons ->
             lessons?.let {
                 adapter.lessons = lessons
                 adapter.notifyDataSetChanged()
             }
+        }
     }
 }
