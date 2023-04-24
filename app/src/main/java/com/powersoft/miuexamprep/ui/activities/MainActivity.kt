@@ -30,10 +30,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = CourseAdapter()
         binding.rcv.adapter = adapter
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val courses = AppDatabase(this@MainActivity).courseDao().all()
-            adapter.courses = courses
-            adapter.notifyDataSetChanged()
+        viewModel.courses.observe(this){courses ->
+            courses?.let {
+                adapter.courses = courses
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 
