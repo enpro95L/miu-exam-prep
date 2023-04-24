@@ -12,12 +12,12 @@ object LessonSeeder {
             Lesson(5,"Activities Intents", 10, 1),
             Lesson(6,"User Inputs Controls", 10, 1),
 
-            Lesson(1, "Objects", 10, 2),
-            Lesson(2, "Inheritance", 10, 2),
-            Lesson(3, "Swing", 10, 2),
-            Lesson(4,"Recursions", 10, 2),
-            Lesson(5,"Datastructures", 10, 2),
-            Lesson(6,"LinkedList", 10, 2)
+            Lesson(7, "Objects", 10, 2),
+            Lesson(8, "Inheritance", 10, 2),
+            Lesson(9, "Swing", 10, 2),
+            Lesson(10,"Recursions", 10, 2),
+            Lesson(11,"Datastructures", 10, 2),
+            Lesson(12,"LinkedList", 10, 2)
         )
     }
 }

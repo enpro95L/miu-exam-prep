@@ -2,13 +2,17 @@ package com.powersoft.miuexamprep.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.powersoft.miuexamprep.adapters.LessonAdapter
 import com.powersoft.miuexamprep.databinding.ActivityLessonBinding
 import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.view_models.LessonViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LessonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLessonBinding
@@ -31,16 +35,13 @@ class LessonActivity : AppCompatActivity() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(LessonViewModel::class.java)
 
-        viewModel.setCourseId(course.id)
-
         val adapter = LessonAdapter()
         binding.recyclerView.adapter = adapter
 
-        viewModel.courseLessons.observe(this) { lessons ->
-            lessons?.let {
-                adapter.lessons = lessons
-                adapter.notifyDataSetChanged()
-            }
+        lifecycleScope.launch(Dispatchers.IO) {
+            val lessons = viewModel.getCourseLessons(course.id)
+            adapter.lessons = lessons
+            adapter.notifyDataSetChanged()
         }
     }
 }
