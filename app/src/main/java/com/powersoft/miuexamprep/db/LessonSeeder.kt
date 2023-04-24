@@ -23,5 +23,4 @@ object LessonSeeder {
             Lesson(6,"LinkedList", 10, 2)
         )
     }
-
 }

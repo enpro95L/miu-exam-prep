@@ -10,6 +10,14 @@ import com.powersoft.miuexamprep.model.Lesson
 
 @Dao
 interface LessonDao {
+    @Query("SELECT * FROM LESSON ORDER BY ID DESC")
+    fun all(): LiveData<List<Lesson>>
+
+    @Query("DELETE FROM LESSON")
+    suspend fun resetTable(): Int
+
+    @Query("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='LESSON'")
+    suspend fun resetTableIds(): Int
 
     @Query("select * from lesson where course_id = :courseId")
     fun courseLessons(courseId: Int): MutableLiveData<List<Lesson>>
