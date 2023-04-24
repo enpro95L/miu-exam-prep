@@ -3,7 +3,6 @@ package com.powersoft.miuexamprep.ui.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -28,12 +27,9 @@ class SplashActivity : AppCompatActivity() {
             if (DataStoreManager.getName(this@SplashActivity) == null) {
                 startActivity(Intent(this@SplashActivity, PersonalDetailActivity::class.java))
             } else {
-                Toast.makeText(
-                    this@SplashActivity,
-                    DataStoreManager.getName(this@SplashActivity).toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                intent.putExtra("username", DataStoreManager.getName(this@SplashActivity))
+                startActivity(intent)
             }
             finish()
         }
