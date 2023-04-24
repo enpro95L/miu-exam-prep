@@ -31,7 +31,7 @@ class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
     override fun onBindViewHolder(holder: LessonViewHolder, position: Int) {
         val lesson = lessons[position]
         holder.apply {
-            tvLessonName.text = lesson.lessonName
+            tvLessonName.text = lesson.name
             tvLessonQuestionNum.text = lesson.totalQuestion.toString()
             tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
             tvLessonDescription.text = "Due on: this Friday"

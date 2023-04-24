@@ -12,19 +12,11 @@ import com.powersoft.miuexamprep.listeners.AnimationEndListener
 import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.ui.activities.LessonActivity
 import com.powersoft.miuexamprep.utils.AnimUtils
+import com.powersoft.miuexamprep.utils.BackgroundShades
 
 class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     var courses: List<Course> = listOf()
-    var bg = listOf(
-        R.drawable.grad_chap_1,
-        R.drawable.grad_chap_2,
-        R.drawable.grad_chap_3,
-        R.drawable.grad_chap_4,
-        R.drawable.grad_chap_5,
-        R.drawable.grad_chap_6,
-        R.drawable.grad_chap_7,
-        R.drawable.grad_chap_8
-    )
+    var bg = BackgroundShades()
 
     inner class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvCourseName: TextView = itemView.findViewById(R.id.tvCourseName)

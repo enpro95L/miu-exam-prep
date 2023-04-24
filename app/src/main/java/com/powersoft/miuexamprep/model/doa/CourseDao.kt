@@ -12,9 +12,6 @@ interface CourseDao {
     @Query("DELETE FROM COURSE")
     suspend fun resetTable(): Int
 
-    @Query("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='COURSE'")
-    suspend fun resetTableIds(): Int
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(course: Course)
 

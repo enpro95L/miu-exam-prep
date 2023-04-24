@@ -1,7 +1,11 @@
 package com.powersoft.miuexamprep.model.doa
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.lifecycle.MutableLiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.powersoft.miuexamprep.model.Lesson
 
 @Dao
@@ -16,21 +20,14 @@ interface LessonDao {
     suspend fun resetTableIds(): Int
 
     @Query("select * from lesson where course_id = :courseId")
-    suspend fun getLessons(courseId: Int): List<Lesson>
+    fun courseLessons(courseId: Int): MutableLiveData<List<Lesson>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addLesson(lesson: Lesson)
-
-    @Insert
-    suspend fun insertAll(vararg lessonList: Lesson)
+    @Query("SELECT * FROM LESSON")
+    fun all(): LiveData<List<Lesson>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(lesson: Lesson)
 
-    @Update
-    suspend fun update(lesson: Lesson)
-
-    @Delete
-    suspend fun delete(lesson: Lesson)
-
+    @Query("DELETE FROM LESSON")
+    suspend fun resetTable(): Int
 }

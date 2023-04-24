@@ -6,7 +6,4 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Course(var name: String, @DrawableRes var icon: Int) : java.io.Serializable {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+data class Course(@PrimaryKey var id: Int, var name: String, @DrawableRes var icon: Int) : java.io.Serializable
