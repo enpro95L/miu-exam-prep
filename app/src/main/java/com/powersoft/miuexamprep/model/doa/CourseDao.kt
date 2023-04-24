@@ -6,7 +6,7 @@ import com.powersoft.miuexamprep.model.Course
 
 @Dao
 interface CourseDao {
-    @Query("SELECT * FROM COURSE ORDER BY ID DESC")
+    @Query("SELECT * FROM COURSE")
     fun all(): LiveData<List<Course>>
 
     @Query("DELETE FROM COURSE")
