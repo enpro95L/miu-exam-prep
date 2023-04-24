@@ -1,7 +1,6 @@
 package com.powersoft.miuexamprep.model.doa
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -17,7 +16,7 @@ interface LessonDao {
     suspend fun resetTable(): Int
 
     @Query("select * from lesson where course_id = :courseId")
-    fun courseLessons(courseId: Int): LiveData<List<Lesson>>
+    suspend fun getCourseLessons(courseId: Int): List<Lesson>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(lesson: Lesson)
