@@ -10,4 +10,12 @@ object DatabaseSeeder {
             repo.addCourse(course)
         }
     }
+
+    suspend fun runLessonSeeder(context: Context){
+        val repo = LessonsRepository(AppDatabase(context).lessonDao())
+        repo.resetTable()
+        for (lesson in LessonSeeder()) {
+            repo.addLesson(lesson)
+        }
+    }
 }

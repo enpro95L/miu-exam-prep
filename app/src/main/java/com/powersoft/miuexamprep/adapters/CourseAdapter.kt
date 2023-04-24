@@ -1,5 +1,6 @@
 package com.powersoft.miuexamprep.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.powersoft.miuexamprep.R
 import com.powersoft.miuexamprep.model.Course
+import com.powersoft.miuexamprep.ui.activities.LessonActivity
 
 class CourseAdapter: RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     var courses: List<Course> = listOf()
-    class CourseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class CourseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvCourseName: TextView = itemView.findViewById(R.id.tvCourseName)
         val imgCourse: ImageView = itemView.findViewById(R.id.imgCourseIcon)
     }
@@ -31,7 +33,9 @@ class CourseAdapter: RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
             imgCourse.setImageResource(course.icon)
 
             itemView.setOnClickListener {
-                //Perform appropriate view navigation here
+                val lessonsIntent = Intent(itemView.context, LessonActivity::class.java)
+                lessonsIntent.putExtra("courseId", course.id)
+                itemView.context.startActivity(lessonsIntent)
             }
         }
     }
