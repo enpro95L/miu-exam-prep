@@ -23,8 +23,8 @@ class LessonActivity : AppCompatActivity() {
 
         binding.toolbar.tvTitle.text = course.name
 
-        lifecycleScope.launch {
-            AppDatabase.invoke(this@LessonActivity).lessonDao().getLessons(10)
-        }
+//        lifecycleScope.launch {
+//            AppDatabase.invoke(this@LessonActivity).lessonDao().getLessons(10)
+//        }
     }
 }

@@ -21,6 +21,5 @@ class CoursesRepository(private val couseDao: CourseDao) {
 
     suspend fun resetTable(){
         couseDao.resetTable()
-        couseDao.resetTableIds()
     }
 }
