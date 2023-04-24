@@ -3,19 +3,25 @@ package com.powersoft.miuexamprep.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.powersoft.miuexamprep.R
+import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.model.Lesson
+import com.powersoft.miuexamprep.utils.BackgroundShades
 
 class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
     var lessons: List<Lesson> = listOf()
+    var course: Course? = null
+
     class LessonViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvLessonName: TextView = itemView.findViewById(R.id.tvLessonName)
         val tvLessonQuestionNum: TextView = itemView.findViewById(R.id.tvLessonQuestionNum)
         val tvLessonCompletion: TextView = itemView.findViewById(R.id.tvLessonCompletion)
         val tvLessonDescription: TextView = itemView.findViewById(R.id.tvLessonDescription)
+        val imgLessson: ImageView = itemView.findViewById(R.id.imgLesson)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonViewHolder {
@@ -30,6 +36,7 @@ class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
 
     override fun onBindViewHolder(holder: LessonViewHolder, position: Int) {
         val lesson = lessons[position]
+
         holder.apply {
             tvLessonName.text = lesson.name
             tvLessonQuestionNum.text = lesson.totalQuestion.toString()
@@ -38,6 +45,12 @@ class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
             itemView.setOnClickListener {
                 Toast.makeText(it.context, "lesson is clicked", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        if (course != null) {
+            holder.imgLessson.setImageResource(course!!.icon)
+            val bg = BackgroundShades()
+            holder.imgLessson.setBackgroundResource(bg[position % bg.size])
         }
     }
 }

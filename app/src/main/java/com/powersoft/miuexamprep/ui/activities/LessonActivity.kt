@@ -2,8 +2,6 @@ package com.powersoft.miuexamprep.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -26,8 +24,6 @@ class LessonActivity : AppCompatActivity() {
 
         val course = intent.getSerializableExtra("course") as Course
 
-        Toast.makeText(this, "${course.id}", Toast.LENGTH_SHORT).show()
-
         binding.toolbar.tvTitle.text = course.name
 
         viewModel = ViewModelProvider(
@@ -41,7 +37,9 @@ class LessonActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             val lessons = viewModel.getCourseLessons(course.id)
             adapter.lessons = lessons
+            adapter.course = course
             adapter.notifyDataSetChanged()
         }
     }
+
 }
