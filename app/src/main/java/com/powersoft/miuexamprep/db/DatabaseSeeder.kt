@@ -4,10 +4,10 @@ import android.content.Context
 
 object DatabaseSeeder {
     suspend fun runCourseSeeder(context: Context){
-        val db = AppDatabase(context)
+        val repo = CoursesRepository(AppDatabase(context).courseDao())
+        repo.resetTable()
         for (course in CourseSeeder()) {
-            db.courseDao().delete(course)
-            db.courseDao().insert(course)
+            repo.addCourse(course)
         }
     }
 }
