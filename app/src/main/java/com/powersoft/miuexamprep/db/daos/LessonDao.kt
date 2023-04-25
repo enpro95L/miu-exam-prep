@@ -10,7 +10,7 @@ import com.powersoft.miuexamprep.model.Lesson
 @Dao
 interface LessonDao {
     @Query("SELECT COUNT(*) FROM LESSON")
-    fun allLessonsCount(): LiveData<Int>
+    suspend fun allLessonsCount(): Int
 
     @Query("select * from lesson where course_id = :courseId")
     suspend fun getCourseLessons(courseId: Int): List<Lesson>

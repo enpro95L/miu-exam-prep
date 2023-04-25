@@ -5,7 +5,7 @@ import com.powersoft.miuexamprep.model.Lesson
 import com.powersoft.miuexamprep.db.daos.LessonDao
 
 class LessonsRepository(private val lessonDao: LessonDao) {
-    val allLessonsCount: LiveData<Int> = lessonDao.allLessonsCount()
+    suspend fun allLessonsCount(): Int = lessonDao.allLessonsCount()
 
     suspend fun addLesson(lesson: Lesson){
         lessonDao.insert(lesson)
