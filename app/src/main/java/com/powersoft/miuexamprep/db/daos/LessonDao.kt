@@ -12,7 +12,7 @@ interface LessonDao {
     @Query("SELECT COUNT(*) FROM LESSON")
     fun allLessonsCount(): LiveData<Int>
 
-    @Query("select * from lesson where course_id = :courseId")
+    @Query("select *, (select count(*) from mcq where course_id = :courseId and lesson_id = id) as activities_count from lesson where course_id = :courseId")
     suspend fun getCourseLessons(courseId: Int): List<Lesson>
 
     @Query("DELETE FROM LESSON")

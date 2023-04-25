@@ -39,7 +39,7 @@ class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
 
         holder.apply {
             tvLessonName.text = lesson.name
-            tvLessonQuestionNum.text = lesson.totalQuestion.toString()
+            tvLessonQuestionNum.text = lesson.activitiesCount.toString()
             tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
             tvLessonDescription.text = "Due on: this Friday"
             itemView.setOnClickListener {
