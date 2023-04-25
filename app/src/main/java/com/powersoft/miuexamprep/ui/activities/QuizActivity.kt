@@ -1,6 +1,7 @@
 package com.powersoft.miuexamprep.ui.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.powersoft.miuexamprep.adapters.OptionAdapter
 import com.powersoft.miuexamprep.databinding.ActivityQuizBinding
 import com.powersoft.miuexamprep.listeners.AnimationEndListener
@@ -84,6 +86,10 @@ class QuizActivity : AppCompatActivity() {
             if (it.selectedAnswer == it.correctAnswer) currentCount++
         }
         Toast.makeText(this, "Correct count: $currentCount", Toast.LENGTH_SHORT).show()
+        var i = Intent(this, ResultActivity::class.java)
+        var gson = Gson()
+        i.putExtra("questionList", gson.toJson(questionList))
+        startActivity(i)
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -5,18 +5,19 @@ import com.powersoft.miuexamprep.model.Lesson
 object LessonSeeder {
     operator fun invoke(): List<Lesson>{
         return listOf(
-            Lesson(1, "Kotlin Fundamentals", 1, 10),
-            Lesson(2, "Creating First App", 1, 10),
-            Lesson(3,"Activity Lifecycle", 1, 10),
-            Lesson(4,"Activities Intents", 1, 10),
-            Lesson(5,"User Inputs Controls", 1, 10),
+            Lesson(1, "Introduction", 10, 1),
+            Lesson(2, "Kotlin Fundamentals", 10, 1),
+            Lesson(3, "Creating First App", 10, 1),
+            Lesson(4,"Activity Lifecycle", 10, 1),
+            Lesson(5,"Activities Intents", 10, 1),
+            Lesson(6,"User Inputs Controls", 10, 1),
 
-            Lesson(6, "Objects", 2, 10),
-            Lesson(7, "Inheritance", 2, 10),
-            Lesson(8, "Swing", 2, 10),
-            Lesson(9,"Recursions", 2, 10),
-            Lesson(10,"Datastructures", 2, 10),
-            Lesson(11,"LinkedList", 2, 10)
+            Lesson(7, "Objects", 10, 2),
+            Lesson(8, "Inheritance", 10, 2),
+            Lesson(9, "Swing", 10, 2),
+            Lesson(10,"Recursions", 10, 2),
+            Lesson(11,"Datastructures", 10, 2),
+            Lesson(12,"LinkedList", 10, 2)
         )
     }
 }

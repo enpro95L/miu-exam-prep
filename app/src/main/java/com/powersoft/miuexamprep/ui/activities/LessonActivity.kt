@@ -5,10 +5,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.powersoft.miuexamprep.adapters.LessonAdapter
 import com.powersoft.miuexamprep.databinding.ActivityLessonBinding
 import com.powersoft.miuexamprep.listeners.AnimationEndListener
 import com.powersoft.miuexamprep.model.Course
+import com.powersoft.miuexamprep.model.MCQ
 import com.powersoft.miuexamprep.utils.AnimUtils
 import com.powersoft.miuexamprep.view_models.LessonViewModel
 import kotlinx.coroutines.Dispatchers

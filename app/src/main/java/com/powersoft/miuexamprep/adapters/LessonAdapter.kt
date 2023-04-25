@@ -18,8 +18,9 @@ class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.Les
         RecyclerView.ViewHolder(binding.root) {
         fun bind(lesson: Lesson) {
             binding.tvLessonName.text = lesson.name
+            binding.progressCompletion.progress = lesson.percentageComplete.toInt()
             binding.tvLessonQuestionNum.text = String.format("%d Questions", lesson.totalQuestion)
-            binding.tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
+            binding.tvLessonCompletion.text = String.format("%.2f%s", lesson.percentageComplete, "%")
             binding.imgLesson.setImageResource(course.icon)
             binding.imgLesson.setBackgroundResource(bg[position % bg.size])
 
