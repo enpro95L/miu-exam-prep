@@ -2,17 +2,21 @@ package com.powersoft.miuexamprep.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 @Entity
 data class MCQ(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey val id: Int,
     @ColumnInfo(name = "course_id") val courseId: Int,
     @ColumnInfo(name = "lesson_id") val lessonId: Int,
-    var question: String,
-    @ColumnInfo(name = "options") var optionList: List<String>,
-    @ColumnInfo(name = "correct_answer") var correctAnswer: String
-) : java.io.Serializable
+    val question: String,
+    @ColumnInfo(name = "options") val optionList: List<String>,
+    @ColumnInfo(name = "correct_answer") val correctAnswer: String
+) : java.io.Serializable {
+    @Ignore
+    var selectedAnswer: String = ""
+}
 
 
 /* USAGE

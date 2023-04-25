@@ -30,13 +30,13 @@ class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
 
             rootView.setOnClickListener {
                 val context = it.context
-                it.startAnimation(AnimUtils.bounce(rootView.context, object : AnimationEndListener {
+                AnimUtils.bounce(it, object : AnimationEndListener {
                     override fun onAnimationEnd() {
                         val intent = Intent(context, LessonActivity::class.java)
                         intent.putExtra("course", course)
                         context.startActivity(intent)
                     }
-                }))
+                })
             }
         }
     }
