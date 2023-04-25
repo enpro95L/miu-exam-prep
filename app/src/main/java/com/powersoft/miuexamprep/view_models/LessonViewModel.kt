@@ -17,14 +17,10 @@ class LessonViewModel(application: Application): AndroidViewModel(application) {
     init {
         repo = LessonsRepository(AppDatabase(application).lessonDao())
 
-        if (repo.allLessonsCount.value != LessonSeeder().size){
-            initializeLessons(application)
-        }
-    }
-
-    private fun initializeLessons(context: Context){
         viewModelScope.launch(Dispatchers.IO) {
-            DatabaseSeeder.runLessonSeeder(context)
+            if (repo.allLessonsCount() != LessonSeeder().size) {
+                DatabaseSeeder.runLessonSeeder(application)
+            }
         }
     }
 
