@@ -11,6 +11,9 @@ import com.powersoft.miuexamprep.R
 import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.model.Lesson
 import com.powersoft.miuexamprep.utils.BackgroundShades
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
     var lessons: List<Lesson> = listOf()
@@ -41,7 +44,7 @@ class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
             tvLessonName.text = lesson.name
             tvLessonQuestionNum.text = lesson.activitiesCount.toString()
             tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
-            tvLessonDescription.text = "Due on: this Friday"
+            tvLessonDescription.text = getDate()
             itemView.setOnClickListener {
                 Toast.makeText(it.context, "lesson is clicked", Toast.LENGTH_SHORT).show()
             }
@@ -52,5 +55,15 @@ class LessonAdapter: RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
             val bg = BackgroundShades()
             holder.imgLessson.setBackgroundResource(bg[position % bg.size])
         }
+    }
+
+    private fun getDate(): String{
+        var dt = Date()
+        val c: Calendar = Calendar.getInstance()
+        c.setTime(dt)
+        c.add(Calendar.DATE, 7)
+        dt = c.getTime()
+        val format = SimpleDateFormat("MM/dd/yyyy")
+        return format.format(dt)
     }
 }
