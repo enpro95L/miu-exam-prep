@@ -13,6 +13,13 @@
         android:orientation="vertical">
 
 
+        <TextView
+            android:id="@+id/tvResultQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

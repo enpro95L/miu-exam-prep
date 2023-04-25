@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MIUExamPrep"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.ResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
