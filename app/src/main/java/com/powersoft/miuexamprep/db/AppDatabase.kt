@@ -37,6 +37,6 @@ abstract class AppDatabase : RoomDatabase() {
             context.applicationContext,
             AppDatabase::class.java,
             "miu-exam-db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }
