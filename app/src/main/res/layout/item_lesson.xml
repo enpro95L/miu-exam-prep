@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="12dp"
-            android:layout_toStartOf="@id/llCompletion"
             android:layout_toEndOf="@id/imgLesson"
             android:orientation="vertical">
 
@@ -45,30 +44,46 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/llCompletion"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:cardCornerRadius="30dp">
+            <RelativeLayout
+                android:id="@+id/llCompletion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_logo" />
-            </androidx.cardview.widget.CardView>
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressCompletion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="false"
+                    android:progress="20"
+                    app:indicatorColor="@color/app_blue"
+                    app:indicatorSize="50dp"
+                    app:trackColor="@color/background"
+                    app:trackThickness="4dp" />
+
+                <TextView
+                    android:id="@+id/tvLessonCompletion"
+                    style="@style/MyTextView.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="20%"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/tvLessonCompletion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Completion 20%"
+                style="@style/MyTextView.Small"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:text="Complete"
                 android:textAlignment="center" />
         </LinearLayout>
+
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

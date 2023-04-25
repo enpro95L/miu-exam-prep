@@ -27,6 +27,8 @@ class CourseViewModel(application: Application): AndroidViewModel(application) {
     private fun initializeCourses(context: Context){
         viewModelScope.launch(Dispatchers.IO) {
             DatabaseSeeder.runCourseSeeder(context)
+            DatabaseSeeder.runLessonSeeder(context)
+            DatabaseSeeder.runMcqsSeeder(context)
         }
     }
 
