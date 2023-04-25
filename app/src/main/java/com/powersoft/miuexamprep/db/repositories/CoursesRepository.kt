@@ -1,8 +1,8 @@
-package com.powersoft.miuexamprep.db
+package com.powersoft.miuexamprep.db.repositories
 
 import androidx.lifecycle.LiveData
 import com.powersoft.miuexamprep.model.Course
-import com.powersoft.miuexamprep.model.doa.CourseDao
+import com.powersoft.miuexamprep.db.daos.CourseDao
 
 class CoursesRepository(private val couseDao: CourseDao) {
     val allCourses: LiveData<List<Course>> = couseDao.all()

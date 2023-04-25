@@ -9,10 +9,10 @@ import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.model.Lesson
 import com.powersoft.miuexamprep.model.MCQ
 import com.powersoft.miuexamprep.model.UserStats
-import com.powersoft.miuexamprep.model.doa.CourseDao
-import com.powersoft.miuexamprep.model.doa.LessonDao
-import com.powersoft.miuexamprep.model.doa.MCQDao
-import com.powersoft.miuexamprep.model.doa.UserStatsDao
+import com.powersoft.miuexamprep.db.daos.CourseDao
+import com.powersoft.miuexamprep.db.daos.LessonDao
+import com.powersoft.miuexamprep.db.daos.MCQDao
+import com.powersoft.miuexamprep.db.daos.UserStatsDao
 import com.powersoft.miuexamprep.utils.ConvertorUtils
 
 @Database(entities = [Course::class, Lesson::class, MCQ::class, UserStats::class], version = 1)

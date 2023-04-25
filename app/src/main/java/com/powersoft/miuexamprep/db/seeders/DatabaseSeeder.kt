@@ -1,6 +1,9 @@
-package com.powersoft.miuexamprep.db
+package com.powersoft.miuexamprep.db.seeders
 
 import android.content.Context
+import com.powersoft.miuexamprep.db.AppDatabase
+import com.powersoft.miuexamprep.db.repositories.CoursesRepository
+import com.powersoft.miuexamprep.db.repositories.LessonsRepository
 
 object DatabaseSeeder {
     suspend fun runCourseSeeder(context: Context){

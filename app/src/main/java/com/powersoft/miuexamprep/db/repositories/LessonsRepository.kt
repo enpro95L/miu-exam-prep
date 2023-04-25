@@ -1,11 +1,10 @@
-package com.powersoft.miuexamprep.db
+package com.powersoft.miuexamprep.db.repositories
 
-import androidx.lifecycle.LiveData
 import com.powersoft.miuexamprep.model.Lesson
-import com.powersoft.miuexamprep.model.doa.LessonDao
+import com.powersoft.miuexamprep.db.daos.LessonDao
 
 class LessonsRepository(private val lessonDao: LessonDao) {
-    val allLessons: LiveData<List<Lesson>> = lessonDao.all()
+    val allLessonsCount: Int = lessonDao.allLessonsCount()
 
     suspend fun addLesson(lesson: Lesson){
         lessonDao.insert(lesson)

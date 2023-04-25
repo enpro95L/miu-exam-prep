@@ -2,22 +2,22 @@ package com.powersoft.miuexamprep.view_models
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.*
 import com.powersoft.miuexamprep.db.*
+import com.powersoft.miuexamprep.db.repositories.LessonsRepository
+import com.powersoft.miuexamprep.db.seeders.DatabaseSeeder
+import com.powersoft.miuexamprep.db.seeders.LessonSeeder
 import com.powersoft.miuexamprep.model.Lesson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LessonViewModel(application: Application): AndroidViewModel(application) {
-    private val _lessons: LiveData<List<Lesson>>
     private val repo: LessonsRepository
 
     init {
         repo = LessonsRepository(AppDatabase(application).lessonDao())
-        _lessons = repo.allLessons
 
-        if (_lessons.value?.size != LessonSeeder().size){
+        if (repo.allLessonsCount != LessonSeeder().size){
             initializeCourses(application)
         }
     }
