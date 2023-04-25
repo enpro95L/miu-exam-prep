@@ -21,19 +21,11 @@ class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.Les
         RecyclerView.ViewHolder(binding.root) {
         fun bind(lesson: Lesson) {
             binding.tvLessonName.text = lesson.name
-            binding.tvLessonQuestionNum.text = String.format("%d Questions", lesson.totalQuestion)
+            binding.tvLessonQuestionNum.text = lesson.activitiesCount.toString()
             binding.tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
             binding.imgLesson.setImageResource(course.icon)
             binding.imgLesson.setBackgroundResource(bg[position % bg.size])
 
-<<<<<<< HEAD
-        holder.apply {
-            tvLessonName.text = lesson.name
-            tvLessonQuestionNum.text = lesson.activitiesCount.toString()
-            tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
-            tvLessonDescription.text = getDate()
-=======
->>>>>>> 45cb7d2394be92ef157b8365bc7038cda25dc991
             itemView.setOnClickListener {
                 binding.root.context.let {
                     val intent = Intent(it, QuizActivity::class.java)
@@ -45,17 +37,6 @@ class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.Les
         }
     }
 
-<<<<<<< HEAD
-    private fun getDate(): String{
-        var dt = Date()
-        val c: Calendar = Calendar.getInstance()
-        c.setTime(dt)
-        c.add(Calendar.DATE, 7)
-        dt = c.getTime()
-        val format = SimpleDateFormat("MM/dd/yyyy")
-        return format.format(dt)
-    }
-=======
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LessonViewHolder(
             ItemLessonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -65,5 +46,4 @@ class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.Les
 
     override fun onBindViewHolder(holder: LessonViewHolder, position: Int) =
         holder.bind(lessons[position])
->>>>>>> 45cb7d2394be92ef157b8365bc7038cda25dc991
 }

@@ -1,7 +1,6 @@
 package com.powersoft.miuexamprep.db.seeders
 
 object AndroidQuestions {
-<<<<<<< HEAD
     private val lesson2: Map<String, List<String>> = mapOf(
         "Which of the following is not a benefit of Kotlin" to listOf(
             "A. Expressive and concise", "B.Verbose", "C. Safer Code"
@@ -18,17 +17,6 @@ object AndroidQuestions {
     )
     private val lesson2Answers: List<String> = listOf("B.Verbose", "A.True", "A.True", "A.True", "B.False", "A.True", "A.?:", "B.False", "A.?", "B.!!")
 
-=======
-    val lesson2: Map<String, List<String>> = mapOf(
-        "Which of the following is not a benefit of Kotlin ?" to listOf(
-            "Expressive and concise", "Verbose", "Safer Code"
-        ),
-        "The keyword, val, is used for immutable variables" to listOf("True", "False"),
-        "The keyword, when, is the replacement of switch in other languages" to listOf("True", "False"),
-        "'for (i in 1..5) print(i)' is valid statement " to listOf("True", "False"),
-        "In Kotlin, variables can be null by default" to listOf("True", "False"),
-        "Allow null-pointer exceptions using the !! operator" to listOf("True", "False"),
->>>>>>> 45cb7d2394be92ef157b8365bc7038cda25dc991
 
     private val lesson3: Map<String, List<String>> = mapOf(
         "Handles user input and creates a window on the screen to display your user interface" to listOf<String>("A.Activity", "B.Resources", "C.Graddle"),
@@ -50,8 +38,4 @@ object AndroidQuestions {
         2 to lesson2Answers,
         3 to lesson3Answers
     )
-<<<<<<< HEAD
-=======
-    val lesson2Answers: List<String> = listOf("Verbose", "True", "True", "True", "False", "True")
->>>>>>> 45cb7d2394be92ef157b8365bc7038cda25dc991
 }
