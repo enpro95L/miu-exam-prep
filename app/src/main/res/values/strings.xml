@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">EXAMS PREPARATION GUIDE</string>
     <string name="title_courses">Courses</string>
+    <string name="title_Result">Quiz Result</string>
 </resources>

@@ -40,6 +40,7 @@ class QuizActivity : AppCompatActivity() {
         lesson = intent.getSerializableExtra("lesson") as Lesson
 
 
+
         binding.toolbar.tvTitle.text = lesson.name
         binding.toolbar.imgBack.setOnClickListener {
             AnimUtils.bounce(it, object : AnimationEndListener {
@@ -48,7 +49,6 @@ class QuizActivity : AppCompatActivity() {
                 }
             })
         }
-
         viewModel = ViewModelProvider(this)[McqViewModel::class.java]
 
         viewModel.questionList.observe(this) { value ->
@@ -87,8 +87,7 @@ class QuizActivity : AppCompatActivity() {
         }
         Toast.makeText(this, "Correct count: $currentCount", Toast.LENGTH_SHORT).show()
         var i = Intent(this, ResultActivity::class.java)
-        var gson = Gson()
-        i.putExtra("questionList", gson.toJson(questionList))
+        i.putExtra("questionList", Gson().toJson(questionList))
         startActivity(i)
     }
 

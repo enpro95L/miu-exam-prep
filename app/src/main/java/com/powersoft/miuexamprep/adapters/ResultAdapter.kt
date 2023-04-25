@@ -24,10 +24,7 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ResultViewHolder>() {
     }
 
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ResultAdapter.ResultViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultAdapter.ResultViewHolder {
         return ResultViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_result, parent, false)
         )
