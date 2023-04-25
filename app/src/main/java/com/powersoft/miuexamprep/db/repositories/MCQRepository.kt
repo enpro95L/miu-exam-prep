@@ -1,10 +1,11 @@
 package com.powersoft.miuexamprep.db.repositories
 
+import androidx.lifecycle.LiveData
 import com.powersoft.miuexamprep.db.daos.MCQDao
 import com.powersoft.miuexamprep.model.MCQ
 
 class MCQRepository(private val mcqDao: MCQDao) {
-    val count: Int = mcqDao.count()
+    val count: LiveData<Int> = mcqDao.count()
 
     suspend fun add(mcq: MCQ){
         mcqDao.add(mcq)
