@@ -17,7 +17,7 @@ class LessonViewModel(application: Application): AndroidViewModel(application) {
     init {
         repo = LessonsRepository(AppDatabase(application).lessonDao())
 
-        if (repo.allLessonsCount != LessonSeeder().size){
+        if (repo.allLessonsCount.value != LessonSeeder().size){
             initializeLessons(application)
         }
     }

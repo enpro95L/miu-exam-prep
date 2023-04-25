@@ -29,7 +29,7 @@ object DatabaseSeeder {
         val repo = MCQRepository(AppDatabase(context).mcqDao())
         repo.resetTable()
 
-        for (mcq in MCQSeeder()) {
+        for (mcq in MCQSeeder.getMCQs()) {
             repo.add(mcq)
         }
     }

@@ -1,5 +1,6 @@
 package com.powersoft.miuexamprep.db.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -9,7 +10,7 @@ import com.powersoft.miuexamprep.model.Lesson
 @Dao
 interface LessonDao {
     @Query("SELECT COUNT(*) FROM LESSON")
-    fun allLessonsCount(): Int
+    fun allLessonsCount(): LiveData<Int>
 
     @Query("select * from lesson where course_id = :courseId")
     suspend fun getCourseLessons(courseId: Int): List<Lesson>
