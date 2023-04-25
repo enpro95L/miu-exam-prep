@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.*
 import com.powersoft.miuexamprep.db.AppDatabase
-import com.powersoft.miuexamprep.db.CourseSeeder
-import com.powersoft.miuexamprep.db.CoursesRepository
-import com.powersoft.miuexamprep.db.DatabaseSeeder
+import com.powersoft.miuexamprep.db.seeders.CourseSeeder
+import com.powersoft.miuexamprep.db.repositories.CoursesRepository
+import com.powersoft.miuexamprep.db.seeders.DatabaseSeeder
 import com.powersoft.miuexamprep.model.Course
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

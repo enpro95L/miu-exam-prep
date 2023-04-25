@@ -1,4 +1,4 @@
-package com.powersoft.miuexamprep.model.doa
+package com.powersoft.miuexamprep.db.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

@@ -1,4 +1,4 @@
-package com.powersoft.miuexamprep.db
+package com.powersoft.miuexamprep.db.seeders
 
 import com.powersoft.miuexamprep.R
 import com.powersoft.miuexamprep.model.Course
