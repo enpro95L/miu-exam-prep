@@ -44,7 +44,9 @@ class PersonalDetailActivity : AppCompatActivity() {
                 email = binding.etNameEmail.text.toString()
                 lifecycleScope.launch {
                     DataStoreManager.saveNameAndEmail(this@PersonalDetailActivity, name, email)
-                    startActivity(Intent(this@PersonalDetailActivity, MainActivity::class.java))
+                    val intent = Intent(this@PersonalDetailActivity, MainActivity::class.java)
+                    intent.putExtra("username", name)
+                    startActivity(intent)
                     finish()
                 }
             }

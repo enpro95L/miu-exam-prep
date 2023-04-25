@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.powersoft.miuexamprep.adapters.LessonAdapter
 import com.powersoft.miuexamprep.databinding.ActivityLessonBinding
+import com.powersoft.miuexamprep.listeners.AnimationEndListener
 import com.powersoft.miuexamprep.model.Course
+import com.powersoft.miuexamprep.utils.AnimUtils
 import com.powersoft.miuexamprep.view_models.LessonViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,21 +27,26 @@ class LessonActivity : AppCompatActivity() {
         val course = intent.getSerializableExtra("course") as Course
 
         binding.toolbar.tvTitle.text = course.name
+        binding.toolbar.imgBack.setOnClickListener {
+            AnimUtils.bounce(it, object : AnimationEndListener {
+                override fun onAnimationEnd() {
+                    this@LessonActivity.onBackPressed()
+                }
+            })
+        }
 
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(LessonViewModel::class.java)
+        )[LessonViewModel::class.java]
 
-        val adapter = LessonAdapter()
+        val adapter = LessonAdapter(course)
         binding.recyclerView.adapter = adapter
 
         lifecycleScope.launch(Dispatchers.IO) {
             val lessons = viewModel.getCourseLessons(course.id)
             adapter.lessons = lessons
-            adapter.course = course
             adapter.notifyDataSetChanged()
         }
     }
-
 }

@@ -11,8 +11,8 @@ class MCQRepository(private val mcqDao: MCQDao) {
         mcqDao.add(mcq)
     }
 
-    suspend fun mcqs(courseId: Int, lessonId: Int): List<MCQ>{
-       return mcqDao.mcqs(courseId, lessonId)
+    suspend fun getQuestions(courseId: Int, lessonId: Int): List<MCQ>{
+       return mcqDao.getQuestions(courseId, lessonId)
     }
 
     suspend fun resetTable(){
