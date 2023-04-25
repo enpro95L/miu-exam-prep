@@ -10,12 +10,16 @@ import com.powersoft.miuexamprep.model.MCQ
 
 class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ResultViewHolder>() {
     var questionList: List<MCQ> = listOf()
+
     inner class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvQuestoin: TextView = itemView.findViewById(R.id.tvResultQuestion)
+        private val tvYourAns: TextView = itemView.findViewById(R.id.tvYourAns)
+        private val tvCorrectAns: TextView = itemView.findViewById(R.id.tvCorrectAns)
 
         fun bind(mcq: MCQ) {
             tvQuestoin.text = mcq.question
-
+            tvYourAns.text = mcq.selectedAnswer
+            tvCorrectAns.text = mcq.correctAnswer
         }
     }
 
