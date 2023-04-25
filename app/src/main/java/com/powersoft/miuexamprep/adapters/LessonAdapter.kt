@@ -9,6 +9,9 @@ import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.model.Lesson
 import com.powersoft.miuexamprep.ui.activities.QuizActivity
 import com.powersoft.miuexamprep.utils.BackgroundShades
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
     var lessons: List<Lesson> = listOf()
@@ -18,7 +21,7 @@ class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.Les
         RecyclerView.ViewHolder(binding.root) {
         fun bind(lesson: Lesson) {
             binding.tvLessonName.text = lesson.name
-            binding.tvLessonQuestionNum.text = String.format("%d Questions", lesson.totalQuestion)
+            binding.tvLessonQuestionNum.text = lesson.activitiesCount.toString()
             binding.tvLessonCompletion.text = String.format("%.2f", lesson.percentageComplete)
             binding.imgLesson.setImageResource(course.icon)
             binding.imgLesson.setBackgroundResource(bg[position % bg.size])
