@@ -18,7 +18,7 @@ class McqViewModel(application: Application): AndroidViewModel(application) {
     init {
         repo = MCQRepository(AppDatabase(application).mcqDao())
 
-        if (repo.count != MCQSeeder.getMCQs().size) {
+        if (repo.count.value != MCQSeeder.getMCQs().size) {
             initializeMcqs(application)
         }
     }

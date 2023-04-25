@@ -1,5 +1,6 @@
 package com.powersoft.miuexamprep.db.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -14,7 +15,7 @@ interface MCQDao {
     suspend fun add(mcq: MCQ)
 
     @Query("Select count(*) from mcq")
-    fun count(): Int
+    fun count(): LiveData<Int>
 
     @Query("Delete from mcq")
     suspend fun resetTable(): Int
