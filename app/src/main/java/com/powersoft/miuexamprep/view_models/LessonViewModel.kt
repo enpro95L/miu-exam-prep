@@ -18,11 +18,11 @@ class LessonViewModel(application: Application): AndroidViewModel(application) {
         repo = LessonsRepository(AppDatabase(application).lessonDao())
 
         if (repo.allLessonsCount != LessonSeeder().size){
-            initializeCourses(application)
+            initializeLessons(application)
         }
     }
 
-    private fun initializeCourses(context: Context){
+    private fun initializeLessons(context: Context){
         viewModelScope.launch(Dispatchers.IO) {
             DatabaseSeeder.runLessonSeeder(context)
         }
