@@ -1,42 +1,51 @@
 package com.powersoft.miuexamprep.adapters
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.powersoft.miuexamprep.R
+import com.powersoft.miuexamprep.databinding.ItemResultBinding
 import com.powersoft.miuexamprep.model.MCQ
 
-class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ResultViewHolder>() {
-    var questionList: List<MCQ> = listOf()
+class ResultAdapter(val questionList: List<MCQ>) :
+    RecyclerView.Adapter<ResultAdapter.ResultViewHolder>() {
 
-    inner class ResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvQuestoin: TextView = itemView.findViewById(R.id.tvResultQuestion)
-        private val tvYourAns: TextView = itemView.findViewById(R.id.tvYourAns)
-        private val tvCorrectAns: TextView = itemView.findViewById(R.id.tvCorrectAns)
+    inner class ResultViewHolder(private val binding: ItemResultBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(mcq: MCQ, position: Int) {
+            with(binding) {
+                tvQuestionNo.text = "${position + 1}"
+                tvResultQuestion.text = mcq.question
+                tvYourAns.text = mcq.selectedAnswer
+                tvCorrectAns.text = mcq.correctAnswer
 
-        fun bind(mcq: MCQ) {
-            tvQuestoin.text = mcq.question
-            tvYourAns.text = mcq.selectedAnswer
-            tvCorrectAns.text = mcq.correctAnswer
+                if (mcq.selectedAnswer == mcq.correctAnswer) {
+                    tvYourAns.backgroundTintList =
+                        ColorStateList.valueOf(binding.root.context.resources.getColor(R.color.green))
+                } else {
+                    tvYourAns.backgroundTintList =
+                        ColorStateList.valueOf(binding.root.context.resources.getColor(R.color.red))
+                }
+            }
         }
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultAdapter.ResultViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ResultAdapter.ResultViewHolder {
         return ResultViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_result, parent, false)
+            ItemResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun getItemCount(): Int {
-        return questionList.size
-    }
+    override fun getItemCount() = questionList.size
 
     override fun onBindViewHolder(holder: ResultAdapter.ResultViewHolder, position: Int) {
-        var question = questionList[position]
-        holder.bind(question)
+        val question = questionList[position]
+        holder.bind(question, position)
     }
 
 }

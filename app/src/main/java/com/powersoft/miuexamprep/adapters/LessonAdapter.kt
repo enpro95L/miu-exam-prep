@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.powersoft.miuexamprep.databinding.ItemLessonBinding
+import com.powersoft.miuexamprep.listeners.OnItemClickListener
 import com.powersoft.miuexamprep.model.Course
 import com.powersoft.miuexamprep.model.Lesson
+import com.powersoft.miuexamprep.ui.activities.LessonActivity
 import com.powersoft.miuexamprep.ui.activities.QuizActivity
 import com.powersoft.miuexamprep.utils.BackgroundShades
 
 class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.LessonViewHolder>() {
     var lessons: List<Lesson> = listOf()
     val bg = BackgroundShades()
+    private var onClickListener: OnItemClickListener? = null
 
     inner class LessonViewHolder(private val binding: ItemLessonBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -25,14 +28,15 @@ class LessonAdapter(val course: Course) : RecyclerView.Adapter<LessonAdapter.Les
             binding.imgLesson.setBackgroundResource(bg[position % bg.size])
 
             itemView.setOnClickListener {
-                binding.root.context.let {
-                    val intent = Intent(it, QuizActivity::class.java)
-                    intent.putExtra("course", course)
-                    intent.putExtra("lesson", lesson)
-                    it.startActivity(intent)
+                if (onClickListener != null) {
+                    onClickListener!!.onClicked(lesson, course)
                 }
             }
         }
+    }
+
+    fun setOnClickListener(onClickListener: OnItemClickListener) {
+        this.onClickListener = onClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

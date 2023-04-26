@@ -39,8 +39,6 @@ class QuizActivity : AppCompatActivity() {
         course = intent.getSerializableExtra("course") as Course
         lesson = intent.getSerializableExtra("lesson") as Lesson
 
-
-
         binding.toolbar.tvTitle.text = lesson.name
         binding.toolbar.imgBack.setOnClickListener {
             AnimUtils.bounce(it, object : AnimationEndListener {
@@ -86,9 +84,16 @@ class QuizActivity : AppCompatActivity() {
             if (it.selectedAnswer == it.correctAnswer) currentCount++
         }
         Toast.makeText(this, "Correct count: $currentCount", Toast.LENGTH_SHORT).show()
-        var i = Intent(this, ResultActivity::class.java)
+        val i = Intent(this, ResultActivity::class.java)
         i.putExtra("questionList", Gson().toJson(questionList))
         startActivity(i)
+
+        val returnIntent = Intent()
+        val percentageComplete = (currentCount.toDouble()/questionList.size) * 100
+        lesson.percentageComplete = percentageComplete.toFloat()
+        returnIntent.putExtra("lesson", lesson)
+        setResult(RESULT_OK, returnIntent)
+        finish()
     }
 
     @SuppressLint("NotifyDataSetChanged")
