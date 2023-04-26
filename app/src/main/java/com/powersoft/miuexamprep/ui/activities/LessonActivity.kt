@@ -3,8 +3,6 @@ package com.powersoft.miuexamprep.ui.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,17 +16,22 @@ import com.powersoft.miuexamprep.model.Lesson
 import com.powersoft.miuexamprep.utils.AnimUtils
 import com.powersoft.miuexamprep.view_models.LessonViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LessonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLessonBinding
     private lateinit var viewModel: LessonViewModel
     private lateinit var adapter: LessonAdapter
+    private lateinit var course: Course
     private var contract =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val lesson = result.data?.getSerializableExtra("lesson") as Lesson
-                viewModel.updateLesson(lesson)
+                lifecycleScope.launch {
+                    viewModel.updateLesson(lesson)
+                    getLesson(course)
+                }
             }
         }
 
@@ -38,7 +41,7 @@ class LessonActivity : AppCompatActivity() {
         binding = ActivityLessonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val course = intent.getSerializableExtra("course") as Course
+        course = intent.getSerializableExtra("course") as Course
 
         binding.toolbar.tvTitle.text = course.name
         binding.toolbar.imgBack.setOnClickListener {
@@ -65,10 +68,19 @@ class LessonActivity : AppCompatActivity() {
             }
         })
 
+        getLesson(course)
+    }
+
+    private fun getLesson(course: Course) {
         lifecycleScope.launch(Dispatchers.IO) {
+            delay(100)
             val lessons = viewModel.getCourseLessons(course.id)
             adapter.lessons = lessons
-            adapter.notifyDataSetChanged()
+            launch(Dispatchers.Main) {
+                adapter.notifyDataSetChanged()
+            }
         }
     }
+
+
 }
