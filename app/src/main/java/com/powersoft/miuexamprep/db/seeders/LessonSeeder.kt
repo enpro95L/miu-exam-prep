@@ -17,7 +17,9 @@ object LessonSeeder {
             Lesson(9, "Swing", 10, 2),
             Lesson(10,"Recursions", 10, 2),
             Lesson(11,"Datastructures", 10, 2),
-            Lesson(12,"LinkedList", 10, 2)
+            Lesson(12,"LinkedList", 10, 2),
+
+            Lesson(13,"Mid Term", 5, 5)
         )
     }
 }

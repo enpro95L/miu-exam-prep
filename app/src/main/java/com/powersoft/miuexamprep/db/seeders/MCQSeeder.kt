@@ -34,9 +34,25 @@ object MCQSeeder {
         }
     }
 
+    private fun androidLesson5() {
+        for ((index, question) in AndroidQuestions.lesson5.keys.withIndex()) {
+            mcqs.add(
+                MCQ(
+                    index + 1,
+                    5,
+                    13,
+                    question,
+                    AndroidQuestions.lesson5[question]!!,
+                    AndroidQuestions.lesson5Answers[index]
+                )
+            )
+        }
+    }
+
     fun getMCQs(): List<MCQ> {
         androidLesson2()
         androidLesson3()
+        androidLesson5()
         return mcqs
     }
 }

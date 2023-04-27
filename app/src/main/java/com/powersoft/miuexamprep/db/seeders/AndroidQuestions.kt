@@ -31,4 +31,31 @@ object AndroidQuestions {
 
     val lesson3Answers: List<String> = listOf("Activity", "Resources", "AndroidManifest.xml", "Graddle", "View", "FrameLayout", "LinearLayout", "ConstraintLayout")
 
+
+    val lesson5: Map<String, List<String>> = mapOf(
+        "Which of the following standard algorithms is not Dynamic Programming based." to
+                listOf<String>(
+                    "Bellman–Ford Algorithm for single source shortest path",
+                    "Floyd Warshall Algorithm for all pairs shortest paths",
+                    "0-1 Knapsack problem",
+                    "Prim's Minimum Spanning Tree"),
+        "Which of the following is not true about comparison-based sorting algorithms?" to
+                listOf<String>(
+                    "The minimum possible time complexity of a comparison-based sorting algorithm is O(n(log(n)) for a random input array",
+                    "Any comparison based sorting algorithm can be made stable by using position as a criteria when two elements are compared",
+                    "Counting Sort is not a comparison based sorting algorithm",
+                    "Heap Sort is not a comparison based sorting algorithm."),
+        "Which of the following is not a backtracking algorithm?" to
+                listOf<String>("Knight tour problem", "N queen problem", "Tower of hanoi", "M coloring problem"),
+        "In a complete k-ary tree, every internal node has exactly k children. The number of leaves in such a tree with n internal nodes is:" to
+                listOf<String>("nk", "(n – 1) k+ 1", "n( k – 1) + 1", "n( k – 1)"),
+        "The following statement is valid. log(n!) = Ө(n log n)." to listOf<String>("True", "False")
+    )
+
+    val lesson5Answers: List<String> = listOf(
+        "Prim's Minimum Spanning Tree",
+        "Heap Sort is not a comparison based sorting algorithm.",
+        "Tower of hanoi",
+        "n( k – 1) + 1",
+        "True")
 }
